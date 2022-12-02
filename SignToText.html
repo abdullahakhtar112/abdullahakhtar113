@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign to Text</title>
+
+    <link rel="stylesheet" href="SignToTextStyle.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;900&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/29bd3dca54.js" crossorigin="anonymous"></script>
+<link rel="icon" href="Images/hello.png">
+
+</head>
+
+
+<body>
+    
+    <section id="one">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="index.html" id="logo"><i class="fa-solid fa-arrow-left-long"></i> </a>
+              <button class="navbar-toggler btn-close-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                
+              </div>
+            </div>
+          </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-sm-12 text-center" id="stt">
+                    
+                        <h1>Sign to Text</h1> <br>
+                    <p>Convert your hand gestures into readable text.</p>
+               
+                    
+                </div>
+                
+                    <div class="col-md-6 col-lg-6 col-sm-12 text-center" id="stt1">
+                        <div style="padding: 9%; background-color: black; border-radius: 5px;">
+                            <h1>Camera View</h1>
+                        </div>
+                       
+                     </div>
+
+                     <div class="col-md-6 col-lg-6 col-sm-12 text-center" id="stt2">
+                        <div style="padding: 5%; background-color: white; border-radius: 5px;">
+                            <p>Your gesture translates to: </p>
+                         <h1>"Help!"</h1>
+                        </div>
+                         
+                     </div>
+
+                </div>
+            </div>
+            <br> <br>
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-sm-12 text-center" id="start">
+                    <div style="padding: 1%;">
+                        <button class="btn btn-light btn-lg" type="button" onclick=showstop()><i class="fa-solid fa-play" style="padding-right: 10px;"></i>Start Recording</button>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-12 col-sm-12 text-center" id="stop">
+                    <div style="padding: 1%;">
+                        <button class="btn btn-light btn-lg" type="button" onclick=hidestop()><i class="fa-solid fa-stop" style="padding-right: 10px;"></i></i>Stop Recording</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+<script>
+    function showstop()
+    {
+        document.getElementById("stop").style.display="block";
+    }
+    function hidestop()
+    {
+        document.getElementById("stop").style.display="none";
+    }
+</script>
+</body>
+
+
+</html>

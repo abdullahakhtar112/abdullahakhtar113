@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to Text</title>
+    
+    <link rel="stylesheet" href="SpeechToTextStyle.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;900&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/29bd3dca54.js" crossorigin="anonymous"></script>
+<link rel="icon" href="Images/hello.png">
+</head>
+
+
+<body>
+ <section id="one">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html" id="logo"><i class="fa-solid fa-arrow-left-long"></i> </a>
+          <button class="navbar-toggler btn-close-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            
+          </div>
+        </div>
+      </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <br> <br> <br>
+
+            <div class="col-md-12 col-lg-12 col-sm-12 text-center" id="p1">
+              <h1>Speech to Text</h1> <br>
+              <p>Convert your speech into readable text.</p>
+            </div>
+            <br> <br> <br>
+       <div class="col-md-12 col-lg-12 col-sm-12 text-center" id="p2">
+        <h4>Record your voice</h4>
+        <br> <br>
+        <button class="btn btn-light btn-md" type="button" onclick=StartRecord()><i class="fa-solid fa-microphone" style="padding-right: 3px;"></i> Start Recording</button>
+
+       </div>
+       <br> <br> <br>
+       <div class="col-md-12 col-lg-12 col-sm-12" id="p3">
+        <h5><span id="nowrecording">Now Recording...</span></h5> <br> <br> <br>
+        <div class="row">
+            <div class="col-md-4 col-lg-4 col-sm-12 text-center" onclick=Paused() style="padding: 3%;" id="pausebutton">
+                <button class="btn btn-primary btn-md" type="button"><i class="fa-solid fa-pause" style="padding-right: 3px;"></i> Pause </button>
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-12 text-center" style="padding: 3%;" id="stopbutton">
+                <button class="btn btn-secondary btn-md" type="button" onclick=Stop()><i class="fa-solid fa-stop" style="padding-right: 3px;"></i> Stop</button>
+
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-12 text-center" style="padding: 3%;" id="deletebutton">
+                <button class="btn btn-danger btn-md" type="button" onclick=SureDelete()><i class="fa-solid fa-trash" style="padding-right: 3px;"></i> Delete</button>
+
+            </div>
+            <div class="col-lg-12 text-center" style="padding: 3%;" id="convertbutton">
+           <a href="#textbox"><button class="btn btn-success btn-md" type="button" onclick=Convert()><i class="fa-solid fa-check" style="padding-right: 3px;"></i> Convert to text</button></a>     
+
+            </div>
+            
+
+            <!-- When delete button is clicked -->
+
+            <div class="col-md-12 col-lg-12 col-sm-12 text-center" id="delete" style="padding: 5%;">
+                <p>Are you sure you want to delete this recording?</p>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 text-end" style="padding: 2%;" >
+                        <button class="btn btn-danger btn-md" onclick=YesDelete()>Yes</button>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 text-start" style="padding: 2%;" >
+                        <button class="btn btn-primary btn-md" onclick="StartRecord()">No</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+       </div>
+        
+    </div>
+    <br> <br> <br> <br> <br>
+    <div class="container" id="textbox">
+        <div class="row">
+            <div class="col-lg-12 text-center" style="padding: 10%; background-color: white; border-radius: 5px;">
+              <p>Your speech has been translated into this text.</p>
+            </div>
+        </div>
+    </div>
+ </section>
+
+
+ 
+<script>
+    function resetConvert()
+    {
+        document.getElementById("convertbutton").style.display="none";
+    }
+    function YesDelete()
+    {
+        document.getElementById("nowrecording").innerHTML="Recording Deleted :(";
+        document.getElementById("delete").style.display="none";
+     
+        document.getElementById("pausebutton").style.display="none";
+        document.getElementById("deletebutton").style.display="none";
+        document.getElementById("stopbutton").style.display="none";
+        document.getElementById("textbox").style.display="none";
+        resetConvert();
+
+
+
+
+    }
+    function StartRecord()
+    {
+        document.getElementById("nowrecording").innerHTML="Now Recording...";
+        document.getElementById("p3").style.display="block";
+        document.getElementById("stopbutton").style.display="block";
+        document.getElementById("pausebutton").style.display="block";
+        document.getElementById("deletebutton").style.display="block";
+        document.getElementById("delete").style.display="none";
+        resetConvert();
+
+    }
+    function SureDelete()
+    {
+        document.getElementById("nowrecording").innerHTML="Recording Paused.";
+        document.getElementById("delete").style.display="block";
+    }
+    function Paused()
+    {
+        document.getElementById("nowrecording").innerHTML="Recording Paused.";
+        resetConvert();
+    }
+    function Stop()
+    {
+        document.getElementById("convertbutton").style.display="block";
+        document.getElementById("nowrecording").innerHTML="Recording Stopped.";
+    }
+    function Convert()
+    {
+        document.getElementById("textbox").style.display="block";
+        resetConvert();
+    }
+    </script>
+</body>
+
+
+</html>
